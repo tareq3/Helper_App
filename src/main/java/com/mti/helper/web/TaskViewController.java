@@ -1,12 +1,13 @@
 
 package com.mti.helper.web;
 
-import com.mti.helper.domain.Task;
 import com.mti.helper.repository.TaskRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -22,20 +23,31 @@ public class TaskViewController {
         this.taskRepository = taskRepository;
     }
 
-    @RequestMapping({ "/tasks", "", "/", })
+    // Initaial Page
+    @RequestMapping({ "", "/", "/index" })
+    public String init(Model model) {
+        model.addAttribute("data", "tareq");
+
+        return "index"; // here index is the html page or link
+    }
+
+    // tasks page
+    @RequestMapping({ "/tasks" })
     public String getTasks(Model model) {
 
-        model.addAttribute("tasks", taskRepository.findAll());
+        model.addAttribute("datas", taskRepository.findAll());
 
         return "tasks";
     }
 
-    @RequestMapping("delete/{id}")
-    public String deleteTask(Model model, Task task) {
+    @GetMapping("/delete/{id}")
+    public String deleteTask(@PathVariable Long id) {
         System.out.println("Delete");
-        taskRepository.delete(task);
+      
+       
+        taskRepository.deleteById(id);
 
-        return "tasks";
+        return "redirect:/tasks";
     }
 
 }

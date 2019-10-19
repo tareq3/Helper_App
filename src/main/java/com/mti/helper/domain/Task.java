@@ -49,4 +49,12 @@ public class Task {
     public Task() {
     }
 
+    public Task(Long id, @NotBlank(message = "key is required") String key,
+            @NotBlank(message = "value is required") String value) {
+        this.id = id;
+        this.key = key;
+        this.value = value;
+    }
+
+    
 }

@@ -11,4 +11,5 @@ import com.mti.helper.domain.Task;
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
 
+     
 }

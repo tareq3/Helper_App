@@ -19,32 +19,17 @@
   </head>
   <body>
     <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Key</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="task:  ${datas}">
-            <td scope="row" th:text="${task.id}"></td>
-            <td th:text="${task.key}"></td>
-            <td th:text="${task.value}"></td>
-            <td>
-              <a
-                name=""
-                id=""
-                class="btn btn-danger"
-                th:href="@{'delete/'+ ${task.id}}"
-                 role="button"
-                >Delete</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="d-flex justify-content-center m-auto pt-5">
+        <h1 th:text=" 'Hello ' + ${ data}"></h1>
+      </div>
+
+      <a
+        name="Show tasks"
+        id="tasks"
+        class="btn btn-primary mt-5 m-auto"
+        th:href="@{/tasks}"
+        role="button"
+        >Show tasks</a>
     </div>
 
     <!-- Optional JavaScript -->
